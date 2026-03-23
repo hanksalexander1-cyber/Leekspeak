@@ -1,10 +1,8 @@
 import unittest
 from leek import LeetSpeak
 
-cliss = LeetSpeak()
 
 class TestLeetSpeak(unittest.TestCase):
-
     def test_translate(self):
         self.assertEqual(LeetSpeak.translate("apple", 0), "4|*|*13")
         self.assertEqual(LeetSpeak.translate("apple", 1), "@|o|o|_€")

@@ -7,7 +7,7 @@ class LeetSpeak:
                 "B" : ("8","|3"),
                 "C" : ("(","<"),
                 "D" : ("|)","[)"),
-                "E" : ("3",""),
+                "E" : ("3","€"),
                 "F" : ("|=","ph"),
                 "G" : ("6","9"),
                 "H" : ("|-|","#"),
@@ -34,20 +34,23 @@ class LeetSpeak:
     @staticmethod
     def translate(text = "", index: int = 0):
         changed_text = ""
-        if index > 1:
-            index = index % 2
-        elif index < 0:
-            raise ValueError
-        elif not isinstance(index, int):
+        if not isinstance(index, int):
             raise TypeError("Integer needed for leet conversion")
+        elif index < 0 or index == float:
+            raise ValueError
+        elif index > 1:
+            index = index % 2
         for i in text.upper():
             if i in LeetSpeak.LeetTable:
                 changed_text += LeetSpeak.LeetTable[i][index]
-        text = changed_text
-        print(text, changed_text)
+        return changed_text
 
         
 
 
 Leet = LeetSpeak()
 Leet.translate("apple", 0)
+Leet.translate("5 ApPlE piEs", 1)
+#Leet.translate("apple", -1)
+#Leet.translate("apple", "dog")
+#Leet.translate("apple", 1.5)
